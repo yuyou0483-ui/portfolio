@@ -1,0 +1,290 @@
+/* ============================================================
+   周晓楠 · PORTfolio — 全局设计系统
+   白底 · 编辑感 · 克制 · 高级 · 微科技
+   ============================================================ */
+
+:root {
+  /* 色彩 */
+  --bg: #ffffff;
+  --ink: #141210;          /* 近黑主墨 */
+  --ink-soft: #2a2724;
+  --body: #6b655c;         /* 暖灰正文 */
+  --muted: #9c968c;        /* 次级文字 */
+  --hairline: #e8e6e2;     /* 暖 hairline 分隔 */
+  --line-strong: #141210;  /* 强调线 */
+  --accent: #5b6042;       /* 橄榄绿点缀 */
+  --paper: #faf9f7;        /* 极浅纸底 */
+
+  /* 字体 */
+  --sans: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --serif: 'Space Grotesk', 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  --lora: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --mono: 'Space Grotesk', 'Inter', ui-monospace, monospace;
+
+  /* 尺寸 */
+  --pad-x: clamp(24px, 6vw, 120px);
+  --nav-h: 84px;
+  --radius: 2px;
+
+  /* 动效 */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--ink); color: #fff; }
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+
+.container {
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+/* ---------- Kicker 小标签 ---------- */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--line-strong);
+  display: inline-block;
+}
+.kicker-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+/* ---------- 大标题 ---------- */
+.display {
+  font-family: var(--serif);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.display .dot { color: var(--muted); }
+
+/* ---------- 段落 ---------- */
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--body);
+  max-width: 60ch;
+}
+
+/* ---------- 文本换行：避免孤字/寡行 ----------
+   先用 balance（Chrome/Safari/Firefox 新版本）平衡短段落换行；
+   再声明 pretty（Firefox/Safari）进一步避免行尾孤字。 */
+h1, h2, h3, p, .lead, .section-note, .paper__label .paper__name {
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+h1, h2, h3, p, .lead {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Chip ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--bg);
+  white-space: nowrap;
+}
+.chip .hash { color: var(--accent); font-weight: 600; margin-right: 4px; }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.35s var(--ease);
+}
+.btn:hover { background: var(--ink); color: #fff; }
+.btn--solid { background: var(--ink); color: #fff; }
+.btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+.btn .arr { transition: transform 0.35s var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ---------- 通用 Section ---------- */
+.section {
+  position: relative;
+  padding-top: clamp(72px, 9vw, 160px);
+  padding-bottom: clamp(72px, 9vw, 160px);
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  /* 主标题与下方副标题之间收紧一些 */
+  margin-bottom: clamp(18px, 2.2vw, 32px);
+}
+.section-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(30px, 4vw, 60px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: #81CCEA;
+}
+.section-title .dot { color: var(--muted); }
+.section-note {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---------- 分割 hairline ---------- */
+.hairline {
+  height: 1px;
+  background: var(--hairline);
+  border: none;
+}
+
+/* ---------- 滚动淡入 ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 微科技细网格背景 ---------- */
+.tech-grid {
+  position: relative;
+}
+.tech-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(20,18,16,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20,18,16,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- 项目卡片 hover ---------- */
+.project-card { color: inherit; }
+.project-card .arr { transition: transform .35s var(--ease); display: inline-block; }
+.project-card:hover .arr { transform: translateX(4px); }
+.project-card:hover .project-media img { transform: scale(1.035); }
+.project-card:hover figure figcaption { opacity: 1; }
+.project-card:hover h3 { color: var(--accent); transition: color .35s var(--ease); }
+
+/* ---------- 导航链接 hover ---------- */
+.nav nav a:hover span { width: 100% !important; }
+
+/* ---------- 个人优势 hover ---------- */
+.strength-card:hover { background: var(--paper) !important; }
+.strength-card:hover::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+}
+
+/* ---------- 项目展示 · 环形轮播 (CircularCarousel) ---------- */
+.projects-ring {
+  /* 满宽出血：突破 container 左右内边距，让作品环铺满视口宽度（更醒目）。
+     margin-left 用 50% - 半个环宽 把环精确居中；超宽屏封顶 2080px。 */
+  width: min(100vw, 2080px);
+  margin-left: calc(50% - min(50vw, 1040px));
+  /* 环高跟着视口走：环靠宽度撑满，高度留够，卡片才不会被压扁 */
+  height: clamp(420px, 48vw, 1120px);
+}
+
+/* 标题/副标题贴合站点字体体系 */
+.projects-ring .circular-carousel__caption {
+  bottom: 30px;
+  gap: 10px;
+  padding: 0 clamp(16px, 4vw, 48px);
+}
+
+.projects-ring .circular-carousel__title {
+  max-width: 54ch;
+  font-family: var(--serif);
+  font-size: clamp(19px, 2vw, 27px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.projects-ring .circular-carousel__subtitle {
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+}
+
+.projects-ring .circular-carousel__count {
+  font-family: var(--mono);
+  font-size: 14px;
+  opacity: 0.45;
+}

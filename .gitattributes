@@ -1,0 +1,26 @@
+# 确保二进制资源不被 CRLF 转换损坏（Windows 下尤其重要）
+*.mp4      binary
+*.webm     binary
+*.mov      binary
+*.webp     binary
+*.jpg      binary
+*.jpeg     binary
+*.png      binary
+*.gif      binary
+*.ico      binary
+*.woff     binary
+*.woff2    binary
+*.ttf      binary
+
+# 文本文件统一 LF
+*.js       text eol=lf
+*.jsx      text eol=lf
+*.json     text eol=lf
+*.css      text eol=lf
+*.html     text eol=lf
+*.md       text eol=lf
+*.yml      text eol=lf
+*.svg      text eol=lf
+
+# 大体积素材不参与 diff
+public/videos/** linguist-generated
