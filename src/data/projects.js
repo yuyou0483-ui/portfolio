@@ -105,4 +105,25 @@ export const PROJECTS = [
       { img: 'images/project-04/case-12.webp', caption: '品牌字标 · TideWhisper 聆潮' },
     ],
   },
+  {
+    num: '05',
+    title: 'SoyStars 豆渣再生儿童蜡笔',
+    zh: '品牌 & 产品设计 · 个人项目',
+    desc: '以维他豆奶生产中的豆渣为材料，构建可涂画、可玩乐的儿童蜡笔品牌 SoyStars。',
+    detail:
+      '以维他豆奶生产过程中产生的豆渣为切入点，探索废弃材料向儿童创意产品转化的可能性：通过品牌、产品与体验设计，把原本被忽视的生产余料转化为可创作、可玩乐的环保蜡笔。环保不止停留在口号，而是融入每一次涂画、拼搭与创造——孩子用指尖探索材料再生的过程，把看似无用的豆渣变成一颗颗属于自己的「环保星星」，让循环不只是一次回收，而是一场充满想象力的创作。',
+    tags: ['品牌设计', '产品设计', '可持续材料'],
+    year: '2026.10',
+    img: 'images/project-05/case-01.webp',
+    gallery: [
+      { img: 'images/project-05/case-02.webp', caption: '品牌主视觉 · SoyStars 字标' },
+      { img: 'images/project-05/case-03.webp', caption: '品牌故事 · 从豆渣到「环保星星」' },
+      { img: 'images/project-05/case-04.webp', caption: '品牌色彩 · 主色与辅助色规范' },
+      { img: 'images/project-05/case-05.webp', caption: '品牌 IP · 星星角色多姿态延展' },
+      { img: 'images/project-05/case-06.webp', caption: '全套产品 · 星星蜡笔与配套物料' },
+      { img: 'images/project-05/case-07.webp', caption: '物料细节 · 说明书 / 笔袋 / 贴纸' },
+      { img: 'images/project-05/case-08.webp', caption: '使用场景 · 儿童涂画互动' },
+      { img: 'images/project-05/case-09.webp', caption: '材料来源 · 亲子共制豆渣材料' },
+    ],
+  },
 ];
